@@ -1,5 +1,16 @@
 VTM reference software for VVC
 ==============================
+# 工作内容
+该工作在VTM8.2的基础上新增了一种基于神经网络的帧内色度预测方式。
+
+# 代码
+1.使用宏定义ANNM标记是否开启提出的基于神经网络的方法。
+
+2.使用宏定义SPLIT_SHOW标记是否在编码端开启输出重建视频块划分的可视化操作。（绿色块表示使用传统的帧内色度预测模式，红色块表示使用基于神经网络的预测模式。
+  在函数在compressGOP（）函数中添加。）
+  
+3.使用神经网络模型作为最优色度预测模式的CU数量与所有CU数量的统计在解码端实现。在void CABACReader::intra_chroma_pred_mode()这个函数中，统计所有CU的数量与使用各种预测模式的CU数量。
+
 
 This software package is the reference software for Versatile Video Coding (VVC). The reference software includes both encoder and decoder functionality.
 
